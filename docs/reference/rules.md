@@ -1385,19 +1385,19 @@ f(x=1, y=2)  # Error raised here
 * [View source](https://github.com/astral-sh/ruff/blob/main/crates%2Fty_python_semantic%2Fsrc%2Ftypes%2Fdiagnostic.rs#L1250)
 </details>
 
-## `unresolved-attribute`
+## `undefined-attribute`
 
 **Default level**: error
 
 <details>
-<summary>detects references to unresolved attributes</summary>
+<summary>detects references to undefined attributes</summary>
 
 ### What it does
-Checks for unresolved attributes.
+Checks for undefined attributes.
 
 ### Why is this bad?
-Accessing an unbound attribute will raise an `AttributeError` at runtime.
-An unresolved attribute is not guaranteed to exist from the type alone,
+Accessing an undefined attribute will raise an `AttributeError` at runtime.
+An undefined attribute is not guaranteed to exist from the type alone,
 so this could also indicate that the object is not of the type that the user expects.
 
 ### Examples
@@ -1408,7 +1408,7 @@ A().foo  # AttributeError: 'A' object has no attribute 'foo'
 ```
 
 ### Links
-* [Related issues](https://github.com/astral-sh/ty/issues?q=sort%3Aupdated-desc%20is%3Aissue%20is%3Aopen%20unresolved-attribute)
+* [Related issues](https://github.com/astral-sh/ty/issues?q=sort%3Aupdated-desc%20is%3Aissue%20is%3Aopen%20undefined-attribute)
 * [View source](https://github.com/astral-sh/ruff/blob/main/crates%2Fty_python_semantic%2Fsrc%2Ftypes%2Fdiagnostic.rs#L1271)
 </details>
 
@@ -1576,18 +1576,18 @@ a = 20 / 0  # type: ignore
 * [View source](https://github.com/astral-sh/ruff/blob/main/crates%2Fty_python_semantic%2Fsrc%2Fsuppression.rs#L65)
 </details>
 
-## `possibly-unbound-attribute`
+## `possibly-undefined-attribute`
 
 **Default level**: warn
 
 <details>
-<summary>detects references to possibly unbound attributes</summary>
+<summary>detects references to possibly undefined attributes</summary>
 
 ### What it does
-Checks for possibly unbound attributes.
+Checks for possibly undefined attributes.
 
 ### Why is this bad?
-Attempting to access an unbound attribute will raise an `AttributeError` at runtime.
+Attempting to access an undefined attribute will raise an `AttributeError` at runtime.
 
 ### Examples
 ```python
@@ -1599,24 +1599,24 @@ A.c  # AttributeError: type object 'A' has no attribute 'c'
 ```
 
 ### Links
-* [Related issues](https://github.com/astral-sh/ty/issues?q=sort%3Aupdated-desc%20is%3Aissue%20is%3Aopen%20possibly-unbound-attribute)
+* [Related issues](https://github.com/astral-sh/ty/issues?q=sort%3Aupdated-desc%20is%3Aissue%20is%3Aopen%20possibly-undefined-attribute)
 * [View source](https://github.com/astral-sh/ruff/blob/main/crates%2Fty_python_semantic%2Fsrc%2Ftypes%2Fdiagnostic.rs#L1057)
 </details>
 
-## `possibly-unbound-implicit-call`
+## `possibly-unimplemented-implicit-call`
 
 **Default level**: warn
 
 <details>
-<summary>detects implicit calls to possibly unbound methods</summary>
+<summary>detects implicit calls to possibly unimplemented methods</summary>
 
 ### What it does
-Checks for implicit calls to possibly unbound methods.
+Checks for implicit calls to possibly unimplemented methods.
 
 ### Why is this bad?
 Expressions such as `x[y]` and `x * y` call methods
 under the hood (`__getitem__` and `__mul__` respectively).
-Calling an unbound method will raise an `AttributeError` at runtime.
+Implicitly calling an unimplemented method may raise a `TypeError` at runtime.
 
 ### Examples
 ```python
@@ -1630,7 +1630,7 @@ A()[0]  # TypeError: 'A' object is not subscriptable
 ```
 
 ### Links
-* [Related issues](https://github.com/astral-sh/ty/issues?q=sort%3Aupdated-desc%20is%3Aissue%20is%3Aopen%20possibly-unbound-implicit-call)
+* [Related issues](https://github.com/astral-sh/ty/issues?q=sort%3Aupdated-desc%20is%3Aissue%20is%3Aopen%20possibly-unimplemented-implicit-call)
 * [View source](https://github.com/astral-sh/ruff/blob/main/crates%2Fty_python_semantic%2Fsrc%2Ftypes%2Fdiagnostic.rs#L110)
 </details>
 
